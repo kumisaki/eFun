@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片点击游戏</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="select.css">
+</head>
+
+<body>
+    <div class="container text-center mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <img id="mainImage" src="apple.jpg" alt="Apple" class="img-fluid">
+            </div>
+        </div>
+        <div class="row justify-content-center select-container">
+            <div class="col-md-6 select-left">
+                <img id="choice1" class="choiceImage img-fluid" src="apple.jpg" alt="Apple">
+            </div>
+            <div class="col-md-6 select-right">
+                <img id="choice2" class="choiceImage img-fluid" src="banana.jpg" alt="Banana">
+            </div>
+        </div>
+        <div id="animationContainer" class="mt-4">
+            <!-- <div id="overlay" class="d-flex justify-content-center align-items-center">
+                        <span>匹配成功!</span>
+                    </div> -->
+            <button id="nextButton" class="btn btn-primary mt-3" style="display:none;">下一个</button>
+        </div>
+        <div class="practice-status">
+            <div id="timer" class="text-center mb-4">
+                <h3>计时器</h3>
+                <div id="timerDisplay">00:00</div>
+            </div>
+            <div id="score" class="text-center">
+                <h3>已答对</h3>
+                <div id="scoreDisplay">0</div>
+            </div>
+        </div>
+        <div class="select-back-button-container">
+            <a class="select-back-button" href="../../index.html">返回</a>
+        </div>
+
+    </div>
+    <audio id="correctSound" src="../../assets/sound/applause.mp3"></audio>
+    <audio id="incorrectSound" src="../../assets/sound/false.mp3"></audio>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="select.js"></script>
+</body>
+
+</html>

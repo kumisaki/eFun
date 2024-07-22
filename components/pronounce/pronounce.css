@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.return-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    background-color: #ff5722;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    transition: background-color 0.3s;
+}
+
+.return-button:hover {
+    background-color: #e64a19;
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    width: 80%;
+}
+
+.card {
+    width: 400px;
+    height: 600px;
+    margin: 0 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, opacity 0.3s;
+    position: absolute;
+    cursor: pointer;
+}
+
+.card:nth-child(1) {
+    transform: translateX(-440px) scale(0.6);
+    z-index: 1;
+    opacity: 0.6;
+}
+
+.card:nth-child(2) {
+    transform: translateX(-220px) scale(0.8);
+    z-index: 2;
+    opacity: 0.8;
+}
+
+.card:nth-child(3) {
+    transform: translateX(0px) scale(1);
+    z-index: 3;
+    opacity: 1;
+}
+
+/* .card:nth-child(4) {
+    transform: translateX(220px) scale(0.8);
+    z-index: 2;
+    opacity: 0.8;
+}
+
+.card:nth-child(5) {
+    transform: translateX(330px) scale(0.6);
+    z-index: 1;
+    opacity: 0.6;
+} */
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #e64a19;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0 10px;
+}
+
+.progress {
+    height: 100%;
+    background-color: #ff5722;
+    width: 0;
+}
+
+.arrow {
+    font-size: 2em;
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+}
+
+.arrow-left {
+    left: 10px;
+}
+
+.arrow-right {
+    right: 10px;
+}

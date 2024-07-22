@@ -1,0 +1,139 @@
+body {
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+}
+
+.container {
+    margin-right: 300px;
+    /* Make space for the floating panel */
+}
+
+#mainImage,
+.choiceImage {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.choiceImage {
+    cursor: pointer;
+    /* transition: transform 0.5s ease; */
+}
+
+#animationContainer {
+    position: relative;
+}
+
+.practice-status {
+    position: fixed;
+    left: 85%;
+    top: 10%;
+}
+
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+
+    75% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+#timer,
+#score {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#timerDisplay,
+#scoreDisplay {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#floatingPanel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 250px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    /* Ensure it appears above other elements */
+}
+
+#timerDisplay,
+#scoreDisplay {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+#timer h3,
+#score h3 {
+    margin-bottom: 10px;
+}
+
+.select-container {
+    margin: 20px 0 0 0;
+}
+
+.select-left {
+    text-align: right;
+}
+
+.select-right {
+    text-align: left;
+}
+
+#nextButton {
+    position: fixed;
+    left: 45%;
+    bottom: 10%;
+}
+
+.select-back-button-container {
+    position: fixed;
+    left: 10%;
+    top: 10%;
+}
