@@ -19,7 +19,7 @@ resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
 const birdImage = new Image();
-birdImage.src = 'D:\\Projects\\2157\\2157\\assets\\img\\pronounce-practice-plane.png'; // Replace with the path to your bird image
+birdImage.src = '../../../assets/img/pronounce-practice-plane.png'; // Replace with the path to your bird image
 
 let gravity = 0.05; // Reduced gravity for slower descent
 let lift = -5;
