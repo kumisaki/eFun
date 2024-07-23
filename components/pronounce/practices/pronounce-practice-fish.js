@@ -2,12 +2,12 @@ const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 let bird = {
-    x: canvas.width / 2,  // Center the bird horizontally
-    y: canvas.height / 2,
-    width: 160, // Width of the bird image
-    height: 120, // Height of the bird image
-    velocity: 0
-  };
+  x: canvas.width / 2,  // Center the bird horizontally
+  y: canvas.height / 2,
+  width: 160, // Width of the bird image
+  height: 120, // Height of the bird image
+  velocity: 0
+};
 
 function resizeCanvas() {
   canvas.width = window.innerWidth;
@@ -19,7 +19,7 @@ resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
 const birdImage = new Image();
-birdImage.src = '../../../assets/img/pronounce-practice-plane.png'; // Replace with the path to your bird image
+birdImage.src = '../../../assets/img/fish.png'; // Replace with the path to your bird image
 
 let gravity = 0.05; // Reduced gravity for slower descent
 let lift = -5;
@@ -34,7 +34,8 @@ function updateBird() {
   bird.velocity += gravity;
   bird.y += bird.velocity;
 
-  if (bird.y > canvas.height - bird.height / 2) {
+  // Ensure bird does not go below canvas bottom
+  if (bird.y + bird.height / 2 > canvas.height) {
     bird.y = canvas.height - bird.height / 2;
     bird.velocity = 0;
   }
@@ -66,7 +67,8 @@ document.getElementById('controlButton').addEventListener('click', () => {
 
 function startGame() {
   isGameRunning = true;
-  document.getElementById('controlButton').textContent = '结束';
+  document.getElementById('controlButton').classList.add('button-pause');
+  document.getElementById('controlButton').classList.remove('button-start');
   bird.y = canvas.height / 2; // Reset bird position
   bird.velocity = 0;
   gameLoop();
@@ -75,7 +77,8 @@ function startGame() {
 
 function stopGame() {
   isGameRunning = false;
-  document.getElementById('controlButton').textContent = 'Start';
+  document.getElementById('controlButton').classList.add('button-start');
+  document.getElementById('controlButton').classList.remove('button-pause');
   cancelAnimationFrame(animationFrameId);
 }
 

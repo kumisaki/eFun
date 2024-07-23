@@ -24,8 +24,10 @@
     font-weight: bold;
     position: relative;
     overflow: hidden;
-    text-decoration: none; /* 移除链接下划线 */
-    color: inherit; /* 保持文字颜色 */
+    text-decoration: none;
+    /* 移除链接下划线 */
+    color: inherit;
+    /* 保持文字颜色 */
 }
 
 .section::after {
@@ -52,6 +54,47 @@
 }
 
 a.section:hover {
-    text-decoration: none; /* 移除链接下划线 */
-    color: inherit; /* 保持文字颜色 */
+    text-decoration: none;
+    /* 移除链接下划线 */
+    color: inherit;
+    /* 保持文字颜色 */
+}
+
+.button-back {
+    background-repeat: no-repeat;
+    background-image: url(./assets/img/back.png);
+    margin: 1.5rem 1.5rem;
+    width: 180px;
+    height: 180px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+.button-control {
+    width: 365px;
+    height: 165px;
+    background-image: url(./assets/img/start.png);
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+.button-start {
+    width: 365px;
+    height: 165px;
+    background-image: url(./assets/img/start.png);
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+.button-pause {
+    width: 365px;
+    height: 165px;
+    margin: 5px 0 0 0;
+    background-position-y: -5px;
+    background-image: url(./assets/img/pause.png);
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
 }

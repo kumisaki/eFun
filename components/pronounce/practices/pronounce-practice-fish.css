@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    overflow: hidden;
+    overflow: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,9 +9,12 @@ body {
   
   #gameCanvas {
     display: block;
-    width: 100vw;
-    height: 100vh;
-    background-color: #70c5ce;
+    min-width: 1200px;
+    width: 100%;
+    height: 100%;
+    background-image: url(../../../assets/img/background-fish.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
   }
   
   #backButton {

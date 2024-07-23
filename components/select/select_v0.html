@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>斜着移动元素示例</title>
+    <style>
+        #movingElement {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+
+        @keyframes moveDiagonally {
+            from {
+                transform: translate(0, 0);
+            }
+            to {
+                transform: translate(300px, 300px); /* 你可以根据需要调整这个值 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="movingElement"></div>
+    <script>
+        function moveElement() {
+            const element = document.getElementById('movingElement');
+            element.style.animation = 'moveDiagonally 2s linear forwards';
+        }
+
+        // 在页面加载后3秒触发动画
+        setTimeout(moveElement, 3000);
+    </script>
+</body>
+</html>

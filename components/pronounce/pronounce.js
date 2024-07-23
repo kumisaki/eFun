@@ -76,7 +76,7 @@ function checkAndRedirect(card, index) {
     }
 
     if (index === currentIndex) {
-        window.location.href = `./games/pronounce-practice-${practice}.html`;
+        window.location.href = `./practices/pronounce-practice-${practice}.html`;
     }
 }
 
