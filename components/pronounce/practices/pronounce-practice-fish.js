@@ -19,7 +19,7 @@ resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
 const birdImage = new Image();
-birdImage.src = '../../../assets/img/fish.png'; // Replace with the path to your bird image
+birdImage.src = '../../../assets/img/fish-2.png'; // Replace with the path to your bird image
 
 let gravity = 0.05; // Reduced gravity for slower descent
 let lift = -5;
