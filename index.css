@@ -63,38 +63,62 @@ a.section:hover {
 .button-back {
     background-repeat: no-repeat;
     background-image: url(./assets/img/back.png);
+    background-size: cover;
     margin: 1.5rem 1.5rem;
-    width: 180px;
-    height: 180px;
+    width: 100px;
+    height: 100px;
     background-color: rgba(0, 0, 0, 0);
     border: none;
+    position: fixed;
+
+}
+
+.button-close {
+    background-repeat: no-repeat;
+    background-image: url(./assets/img/close.png);
+    background-size: cover;
+    margin: 1.5rem 1.5rem;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    position: fixed;
+
 }
 
 .button-control {
-    width: 365px;
-    height: 165px;
+    width: 220px;
+    height: 100px;
     background-image: url(./assets/img/start.png);
     background-repeat: no-repeat;
+    background-size: cover;
     background-color: rgba(0, 0, 0, 0);
     border: none;
 }
 
 .button-start {
-    width: 365px;
-    height: 165px;
+    width: 220px;
+    height: 100px;
     background-image: url(./assets/img/start.png);
     background-repeat: no-repeat;
+    background-size: cover;
     background-color: rgba(0, 0, 0, 0);
     border: none;
 }
 
 .button-pause {
-    width: 365px;
-    height: 165px;
+    width: 220px;
+    height: 100px;
     margin: 5px 0 0 0;
     background-position-y: -5px;
     background-image: url(./assets/img/pause.png);
     background-repeat: no-repeat;
+    background-size: cover;
     background-color: rgba(0, 0, 0, 0);
     border: none;
+}
+
+button:focus {
+    border: none;
+    outline: none;
 }

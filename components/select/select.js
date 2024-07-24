@@ -1,3 +1,8 @@
+document.getElementById('backButton').addEventListener('click', () => {
+    window.location.href = '../../index.html';
+});
+// $('#myModal').modal('show');
+
 document.addEventListener('DOMContentLoaded', () => {
     const mainImage = document.getElementById('mainImage');
     const choice1 = document.getElementById('choice1');
@@ -7,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const animationContainer = document.getElementById('animationContainer');
     const overlay = document.getElementById('overlay');
     const nextButton = document.getElementById('nextButton');
+    const completeButton = document.getElementById('completeButton');
     const timerDisplay = document.getElementById('timerDisplay');
     const scoreDisplay = document.getElementById('scoreDisplay');
 
@@ -18,14 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const levels = [
         { mainImage: 'apple.jpg', choice1: 'apple.jpg', choice2: 'banana.jpg' },
         { mainImage: 'banana.jpg', choice1: 'banana.jpg', choice2: 'cherry.jpg' },
-        { mainImage: 'cherry.jpg', choice1: 'cherry.jpg', choice2: 'grape.jpg' },
-        { mainImage: 'grape.jpg', choice1: 'grape.jpg', choice2: 'orange.jpg' },
-        { mainImage: 'orange.jpg', choice1: 'orange.jpg', choice2: 'peach.jpg' },
-        { mainImage: 'peach.jpg', choice1: 'peach.jpg', choice2: 'pear.jpg' },
-        { mainImage: 'pear.jpg', choice1: 'pear.jpg', choice2: 'pineapple.jpg' },
-        { mainImage: 'pineapple.jpg', choice1: 'pineapple.jpg', choice2: 'strawberry.jpg' },
-        { mainImage: 'strawberry.jpg', choice1: 'strawberry.jpg', choice2: 'watermelon.jpg' },
-        { mainImage: 'watermelon.jpg', choice1: 'watermelon.jpg', choice2: 'kiwi.jpg' },
+        // { mainImage: 'cherry.jpg', choice1: 'grape.jpg', choice2: 'cherry.jpg' },
+        // { mainImage: 'grape.jpg', choice1: 'grape.jpg', choice2: 'orange.jpg' },
+        // { mainImage: 'orange.jpg', choice1: 'peach.jpg', choice2: 'orange.jpg' },
+        // { mainImage: 'peach.jpg', choice1: 'peach.jpg', choice2: 'pear.jpg' },
+        // { mainImage: 'pear.jpg', choice1: 'pear.jpg', choice2: 'pineapple.jpg' },
+        // { mainImage: 'pineapple.jpg', choice1: 'pineapple.jpg', choice2: 'strawberry.jpg' },
+        // { mainImage: 'strawberry.jpg', choice1: 'strawberry.jpg', choice2: 'watermelon.jpg' },
+        // { mainImage: 'watermelon.jpg', choice1: 'watermelon.jpg', choice2: 'kiwi.jpg' },
     ];
 
     function loadLevel(level) {
@@ -38,13 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
         resetImage(choice1);
         resetImage(choice2);
         // overlay.style.display = 'none';
-        nextButton.style.display = 'none';
+        // nextButton.style.display = 'none';
     }
 
     function resetImage(image) {
         image.style.position = '';
         image.style.zIndex = '';
-        image.style.transform = '';
+        image.style.animation = 'none'; // 取消动画以便重置位置
+        image.style.transform = 'translate(0, 0)';
         image.style.transition = '';
     }
 
@@ -55,18 +62,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const offsetY = rectMain.top - rectChoice.top;
         const scaleX = 2.1;
         const scaleY = 2.1;
-
-        image.style.position = 'absolute';
+        image.style.position = '';
         image.style.zIndex = '999';
-        image.style.transition = 'transform 1s ease';
-        image.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+        if (image.id == 'choice1') {
+            image.style.animation = 'left-select 1s linear forwards';
+        } else {
+            image.style.animation = 'right-select 1s linear forwards';
+        }
 
         setTimeout(() => {
-            image.style.transition = 'transform 2s ease';
-            image.style.transform = `translate(0px, -160px) scale(${scaleX}, ${scaleY})`;
             image.style.zIndex = '999';
+            console.log($('.correct-image-container').html(`<img class="correct-image" src="${image.src}"/>`))
+            console.log(image.src.split('/'))
+            $('#myModal').modal('show');
+
+            // const popup = document.getElementById('popup');
+            // popup.classList.add('show');
             // overlay.style.display = 'flex';
-            nextButton.style.display = 'block';
+            // nextButton.style.display = 'block';
         }, 1000);
     }
 
@@ -82,8 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500);
         } else {
             incorrectSound.play();
-            image.classList.add('shake');
-            setTimeout(() => image.classList.remove('shake'), 1000);
+            // image.classList.add('shake');
+            image.style.animation = 'shake 0.5s linear forwards'
+            console.log(image.id)
+            setTimeout(() => {
+                // image.classList.remove('shake')
+                image.style.animation = 'none'; // 取消动画以便重置位置
+                image.style.transform = 'translate(0, 0)';
+            }, 1000);
         }
     }
 
@@ -109,14 +128,22 @@ document.addEventListener('DOMContentLoaded', () => {
         currentLevel++;
         if (currentLevel < levels.length) {
             loadLevel(currentLevel);
+            $('#myModal').modal('hide');
+
         } else {
-            alert('恭喜你完成了所有关卡!');
+
+            $('#myModal').modal('hide');
+            $('#myModal2').modal('show');
             stopTimer();
             // Optionally, you can reset the game or show a summary here
             currentLevel = 0; // Reset to the first level or handle accordingly
             loadLevel(currentLevel);
         }
     });
+
+    completeButton.addEventListener('click', ()=>{
+        window.location.href = '../../index.html'
+    })
 
     // Initialize game
     loadLevel(currentLevel);

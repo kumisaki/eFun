@@ -128,17 +128,6 @@ html,body{
     display: none;
 }
 
-.select-back-button-container {
-    position: fixed;
-    left: 10%;
-    top: 10%;
-}
-
-.select-back-button {
-    font-size: 2rem;
-}
-
-.select-back-button:hover{
-    text-decoration: none; /* 移除链接下划线 */
-    color: inherit; /* 保持文字颜色 */
+.button-back {
+    position: absolute;
 }

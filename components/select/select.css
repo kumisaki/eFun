@@ -1,10 +1,13 @@
 body {
     background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    /* Prevent horizontal scroll */
 }
+
+.button-back {
+    left: 1rem;
+    top: 1rem;
+    background-size: cover;
+}
+
 
 .container {
     margin-right: 300px;
@@ -51,6 +54,28 @@ body {
 
 .shake {
     animation: shake 0.5s;
+}
+
+@keyframes left-select {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(165px, -390px);
+        /* 你可以根据需要调整这个值 */
+    }
+}
+
+@keyframes right-select {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(-165px, -390px);
+        /* 你可以根据需要调整这个值 */
+    }
 }
 
 @keyframes shake {
@@ -142,9 +167,11 @@ body {
     font-size: 2rem;
 }
 
-.select-back-button:hover{
-    text-decoration: none; /* 移除链接下划线 */
-    color: inherit; /* 保持文字颜色 */
+.select-back-button:hover {
+    text-decoration: none;
+    /* 移除链接下划线 */
+    color: inherit;
+    /* 保持文字颜色 */
 }
 
 .select-description-container {
@@ -153,4 +180,8 @@ body {
 
 .select-description {
     font-size: 1.5rem;
+}
+
+.modal-dialog {
+    margin-top: 20%;
 }

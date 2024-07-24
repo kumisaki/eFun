@@ -4,201 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>图片点击游戏</title>
+    <title>找相同</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="select.css"> -->
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="select.css">
 
 </head>
 
-<style>
-    body {
-        background-color: #f8f9fa;
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-        /* Prevent horizontal scroll */
-    }
-
-    .container {
-        margin-right: 300px;
-        /* Make space for the floating panel */
-    }
-
-    #mainImage,
-    .choiceImage {
-        width: 100%;
-        height: auto;
-        max-width: 300px;
-        max-height: 300px;
-        object-fit: cover;
-    }
-
-    .choiceImage {
-        cursor: pointer;
-        /* transition: transform 0.5s ease; */
-    }
-
-    #animationContainer {
-        position: relative;
-    }
-
-    .practice-status {
-        position: fixed;
-        left: 85%;
-        top: 10%;
-    }
-
-    #overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        display: none;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.5rem;
-    }
-
-    .shake {
-        animation: shake 0.5s;
-    }
-
-    @keyframes left-select {
-        from {
-            transform: translate(0, 0);
-        }
-
-        to {
-            transform: translate(165px, -390px);
-            /* 你可以根据需要调整这个值 */
-        }
-    }
-
-    @keyframes right-select {
-        from {
-            transform: translate(0, 0);
-        }
-
-        to {
-            transform: translate(-165px, -390px);
-            /* 你可以根据需要调整这个值 */
-        }
-    }
-
-    @keyframes shake {
-        0% {
-            transform: translateX(0);
-        }
-
-        25% {
-            transform: translateX(-10px);
-        }
-
-        50% {
-            transform: translateX(10px);
-        }
-
-        75% {
-            transform: translateX(-10px);
-        }
-
-        100% {
-            transform: translateX(0);
-        }
-    }
-
-    #timer,
-    #score {
-        background: #fff;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    #timerDisplay,
-    #scoreDisplay {
-        font-size: 2rem;
-        font-weight: bold;
-    }
-
-    #floatingPanel {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        width: 250px;
-        background: #fff;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        /* Ensure it appears above other elements */
-    }
-
-    #timerDisplay,
-    #scoreDisplay {
-        font-size: 2rem;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    #timer h3,
-    #score h3 {
-        margin-bottom: 10px;
-    }
-
-    .select-container {
-        margin: 20px 0 0 0;
-    }
-
-    .select-left {
-        text-align: right;
-    }
-
-    .select-right {
-        text-align: left;
-    }
-
-    #nextButton {
-        position: fixed;
-        left: 45%;
-        bottom: 10%;
-    }
-
-    .select-back-button-container {
-        position: fixed;
-        left: 10%;
-        top: 10%;
-    }
-
-    .select-back-button {
-        font-size: 2rem;
-    }
-
-    .select-back-button:hover {
-        text-decoration: none;
-        /* 移除链接下划线 */
-        color: inherit;
-        /* 保持文字颜色 */
-    }
-
-    .select-description-container {
-        margin: 1rem 0 0 0;
-    }
-
-    .select-description {
-        font-size: 1.5rem;
-    }
-
-    .modal-dialog {
-        margin-top: 20%;
-    }
-</style>
-
 <body>
+
     <div class="container text-center mt-5">
+        <button id="backButton" class="button-back"></button>
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <img id="mainImage" src="apple.jpg" alt="Apple" class="img-fluid">
@@ -221,7 +37,7 @@
             <!-- <div id="overlay" class="d-flex justify-content-center align-items-center">
                         <span>匹配成功!</span>
                     </div> -->
-            <button id="nextButton" class="btn btn-primary mt-3" style="display:none;">下一个</button>
+            <!-- <button id="nextButton" class="btn btn-primary mt-3" style="display:none;">下一个</button> -->
         </div>
         <div class="practice-status">
             <div id="timer" class="text-center mb-4">
@@ -233,28 +49,130 @@
                 <div id="scoreDisplay">0</div>
             </div>
         </div>
-        <div class="select-back-button-container">
-            <a class="select-back-button" href="../../index.html">返回</a>
-        </div>
 
-        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+            data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-correct">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="myModalLabel">模态框标题</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <div class="content-container">
+
+                        <div class="correct-image-container">
+
+                        </div>
+                    </div>
+                    <div id="nextButton" class="button-next"></div>
+                    <!-- <div class="modal-header"> -->
+                    <!-- <h5 class="modal-title" id="myModalLabel"></h5> -->
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        这是模态框的内容。
-                    </div>
-                    <div class="modal-footer">
+                        </button> -->
+                    <!-- </div> -->
+                    <!-- <div class="modal-body"> -->
+                    <!-- 这是模态框的内容。 -->
+                    <!-- </div> -->
+                    <!-- <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="myModal2" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+            data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-complete">
+                <div class="modal-content">
+                    <div class="content-container">
+
+                        <div class="complete-container">
+
+                        </div>
+                    </div>
+                    <div id="completeButton" class="button-complete"></div>
+                    <!-- <div class="modal-header"> -->
+                    <!-- <h5 class="modal-title" id="myModalLabel"></h5> -->
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button> -->
+                    <!-- </div> -->
+                    <!-- <div class="modal-body"> -->
+                    <!-- 这是模态框的内容。 -->
+                    <!-- </div> -->
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+
+        <style>
+            .modal-open .modal {
+                overflow-x: hidden;
+                overflow-y: hidden;
+            }
+
+            .modal-dialog {
+                max-width: 1000px;
+                top: -37%;
+                /* transform: translate(-50%, -50%); */
+                background-color: #7c7c7d;
+                background-size: cover;
+                background-repeat: no-repeat;
+                height: 779px;
+                width: 777px;
+            }
+
+            .modal-content {
+                background-color: rgba(0, 0, 0, 0);
+                border: none;
+                outline: none;
+            }
+
+            .modal-dialog-correct .content-container {
+                background-image: url(./great.png);
+                background-size: cover;
+                height: 779px;
+                width: 777px;
+                /* background-color: rgba(0, 0, 255, 0.2); */
+                position: relative;
+                text-align: center;
+            }
+
+            .correct-image-container {
+                position: relative;
+                top: 42%;
+                /* left: 50%; */
+                text-align: center;
+            }
+
+            .modal-dialog-complete .content-container {
+                background-image: url(./congrats.png);
+                background-size: cover;
+                height: 779px;
+                width: 777px;
+                /* background-color: rgba(0, 0, 255, 0.2); */
+                position: relative;
+            }
+
+            .button-next {
+                width: 40%;
+                height: 20%;
+                left: 30%;
+                /* background-color: rgba(0, 255, 0, 0.2); */
+                position: relative;
+                bottom: 22%;
+            }
+
+            .button-complete {
+                width: 500px;
+                height: 150px;
+                left: 18%;
+                /* background-color: rgba(0, 255, 0, 0.2); */
+                position: absolute;
+                bottom: 2%;
+                z-index: 999;
+            }
+        </style>
 
     </div>
     <audio id="correctSound" src="../../assets/sound/applause.mp3"></audio>
@@ -262,145 +180,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- <script src="select.js"></script> -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mainImage = document.getElementById('mainImage');
-            const choice1 = document.getElementById('choice1');
-            const choice2 = document.getElementById('choice2');
-            const correctSound = document.getElementById('correctSound');
-            const incorrectSound = document.getElementById('incorrectSound');
-            const animationContainer = document.getElementById('animationContainer');
-            const overlay = document.getElementById('overlay');
-            const nextButton = document.getElementById('nextButton');
-            const timerDisplay = document.getElementById('timerDisplay');
-            const scoreDisplay = document.getElementById('scoreDisplay');
-
-            let currentLevel = 0;
-            let score = 0;
-            let startTime = Date.now();
-            let timerInterval;
-
-            const levels = [
-                { mainImage: 'apple.jpg', choice1: 'apple.jpg', choice2: 'banana.jpg' },
-                { mainImage: 'banana.jpg', choice1: 'banana.jpg', choice2: 'cherry.jpg' },
-                { mainImage: 'cherry.jpg', choice1: 'grape.jpg', choice2: 'cherry.jpg' },
-                { mainImage: 'grape.jpg', choice1: 'grape.jpg', choice2: 'orange.jpg' },
-                { mainImage: 'orange.jpg', choice1: 'peach.jpg', choice2: 'orange.jpg' },
-                { mainImage: 'peach.jpg', choice1: 'peach.jpg', choice2: 'pear.jpg' },
-                { mainImage: 'pear.jpg', choice1: 'pear.jpg', choice2: 'pineapple.jpg' },
-                { mainImage: 'pineapple.jpg', choice1: 'pineapple.jpg', choice2: 'strawberry.jpg' },
-                { mainImage: 'strawberry.jpg', choice1: 'strawberry.jpg', choice2: 'watermelon.jpg' },
-                { mainImage: 'watermelon.jpg', choice1: 'watermelon.jpg', choice2: 'kiwi.jpg' },
-            ];
-
-            function loadLevel(level) {
-                const { mainImage: mainSrc, choice1: choice1Src, choice2: choice2Src } = levels[level];
-                mainImage.src = mainSrc;
-                choice1.src = choice1Src;
-                choice2.src = choice2Src;
-                choice1.classList.remove('shake');
-                choice2.classList.remove('shake');
-                resetImage(choice1);
-                resetImage(choice2);
-                // overlay.style.display = 'none';
-                nextButton.style.display = 'none';
-            }
-
-            function resetImage(image) {
-                image.style.position = '';
-                image.style.zIndex = '';
-                image.style.animation = 'none'; // 取消动画以便重置位置
-                image.style.transform = 'translate(0, 0)';
-                image.style.transition = '';
-            }
-
-            function animateImage(image) {
-                const rectMain = mainImage.getBoundingClientRect();
-                const rectChoice = image.getBoundingClientRect();
-                const offsetX = rectMain.left - rectChoice.left * 1.85;
-                const offsetY = rectMain.top - rectChoice.top;
-                const scaleX = 2.1;
-                const scaleY = 2.1;
-                image.style.position = '';
-                image.style.zIndex = '999';
-                if(image.id == 'choice1') {
-                    image.style.animation = 'left-select 1s linear forwards';
-                } else {
-                    image.style.animation = 'right-select 1s linear forwards';
-                }
-
-                setTimeout(() => {
-                    image.style.zIndex = '999';
-                    $('#myModal').modal('show');
-                    // const popup = document.getElementById('popup');
-                    // popup.classList.add('show');
-                    // overlay.style.display = 'flex';
-                    nextButton.style.display = 'block';
-                }, 1000);
-            }
-
-            function checkChoice(image) {
-                if (image.src === mainImage.src) {
-                    correctSound.play();
-                    score++;
-                    scoreDisplay.textContent = score;
-                    // image.classList.add('shake');
-                    setTimeout(() => {
-                        // image.classList.remove('shake');
-                        animateImage(image);
-                    }, 500);
-                } else {
-                    console.log('hahaha')
-                    incorrectSound.play();
-                    // image.classList.add('shake');
-                    image.style.animation = 'shake 0.5s linear forwards'
-                    console.log(image.id)
-                    setTimeout(() => {
-                        // image.classList.remove('shake')
-                        image.style.animation = 'none'; // 取消动画以便重置位置
-                        image.style.transform = 'translate(0, 0)';
-                    }, 1000);
-                }
-            }
-
-            function updateTimer() {
-                const elapsed = Date.now() - startTime;
-                const minutes = Math.floor(elapsed / 60000);
-                const seconds = Math.floor((elapsed % 60000) / 1000);
-                timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            }
-
-            function startTimer() {
-                timerInterval = setInterval(updateTimer, 1000);
-            }
-
-            function stopTimer() {
-                clearInterval(timerInterval);
-            }
-
-            choice1.addEventListener('click', () => checkChoice(choice1));
-            choice2.addEventListener('click', () => checkChoice(choice2));
-
-            nextButton.addEventListener('click', () => {
-                currentLevel++;
-                if (currentLevel < levels.length) {
-                    loadLevel(currentLevel);
-                } else {
-                    alert('恭喜你完成了所有关卡!');
-                    stopTimer();
-                    // Optionally, you can reset the game or show a summary here
-                    currentLevel = 0; // Reset to the first level or handle accordingly
-                    loadLevel(currentLevel);
-                }
-            });
-
-            // Initialize game
-            loadLevel(currentLevel);
-            startTimer(); // Start the timer when the game starts
-        });
-
-    </script>
+    <script src="select.js"></script>
 </body>
 
 </html>

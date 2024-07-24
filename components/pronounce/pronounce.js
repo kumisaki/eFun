@@ -3,7 +3,9 @@ const cards = document.querySelectorAll('.card');
 // const audio = document.getElementById('audio');
 // const playPauseButton = document.getElementById('playPauseButton');
 // const progressBar = document.getElementById('progress');
-
+document.getElementById('backButton').addEventListener('click', () => {
+    window.location.href = '../../index.html';
+});
 function updateCards() {
     cards.forEach((card, index) => {
         // console.log(card, index)
@@ -62,12 +64,12 @@ function selectCard(index) {
 }
 
 function checkAndRedirect(card, index) {
-    switch (currentIndex+1) {
+    switch (currentIndex + 1) {
         case 1:
             practice = 'plane';
             break;
         case 2:
-            practice = 'climb';
+            practice = 'car';
             break;
         case 3:
             practice = 'fish';
