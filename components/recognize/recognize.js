@@ -34,7 +34,7 @@ $(document).ready(function () {
         }
 
         // Update popup content
-        $popup.html('<img src="../../assets/img/' + animalName + '.png" alt="' + animalName + '" style="width:100px;height:100px;">');
+        $popup.html('<img src="../../assets/img/' + animalName + '.png" alt="' + animalName + '" style="height:232px;">');
 
         $popup.css({
             top: top,
