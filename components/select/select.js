@@ -30,18 +30,18 @@ document.addEventListener('DOMContentLoaded', () => {
         { mainImage: 'grape.jpg', choice1: 'pineapple.jpg', choice2: 'grape.jpg' },
         { mainImage: 'strawberry.jpg', choice1: 'grape.jpg', choice2: 'strawberry.jpg' },
         { mainImage: 'pear.jpg', choice1: 'pear.jpg', choice2: 'peach.jpg' },
-        // { mainImage: 'peach.jpg', choice1: 'peach.jpg', choice2: 'pear.jpg' },
-        // { mainImage: 'pear.jpg', choice1: 'pear.jpg', choice2: 'pineapple.jpg' },
-        // { mainImage: 'pineapple.jpg', choice1: 'pineapple.jpg', choice2: 'strawberry.jpg' },
-        // { mainImage: 'strawberry.jpg', choice1: 'strawberry.jpg', choice2: 'watermelon.jpg' },
-        // { mainImage: 'watermelon.jpg', choice1: 'watermelon.jpg', choice2: 'kiwi.jpg' },
+        { mainImage: 'peach.jpg', choice1: 'peach.jpg', choice2: 'pear.jpg' },
+        { mainImage: 'kiwi.jpg', choice1: 'kiwi.jpg', choice2: 'pineapple.jpg' },
+        { mainImage: 'pineapple.jpg', choice1: 'pineapple.jpg', choice2: 'strawberry.jpg' },
+        { mainImage: 'strawberry.jpg', choice1: 'strawberry.jpg', choice2: 'watermelon.jpg' },
+        { mainImage: 'watermelon.jpg', choice1: 'watermelon.jpg', choice2: 'kiwi.jpg' },
     ];
 
     function loadLevel(level) {
         const { mainImage: mainSrc, choice1: choice1Src, choice2: choice2Src } = levels[level];
-        mainImage.src = mainSrc;
-        choice1.src = choice1Src;
-        choice2.src = choice2Src;
+        mainImage.src = `../../assets/img/${mainSrc}`;
+        choice1.src = `../../assets/img/${choice1Src}`;
+        choice2.src = `../../assets/img/${choice2Src}`;
         choice1.classList.remove('shake');
         choice2.classList.remove('shake');
         resetImage(choice1);
