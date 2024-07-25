@@ -12,6 +12,7 @@ $(document).ready(function () {
         var animalFarmHeight = $('#animalFarm').height();
         var popupWidth = $popup.width();
         var popupHeight = $popup.height();
+        var sound = $('#pronounce');
 
         // Calculate position
         var top = offset.top;
@@ -35,7 +36,8 @@ $(document).ready(function () {
 
         // Update popup content
         $popup.html('<img src="../../assets/img/' + animalName + '.png" alt="' + animalName + '" style="height:232px;">');
-
+        sound.attr('src', `../../assets/sound/${animalName}.mp3`);
+        sound.get(0).play()
         $popup.css({
             top: top,
             left: left
