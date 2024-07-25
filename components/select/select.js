@@ -11,8 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const incorrectSound = document.getElementById('incorrectSound');
     const animationContainer = document.getElementById('animationContainer');
     const overlay = document.getElementById('overlay');
-    const nextButton = document.getElementById('nextButton');
-    const completeButton = document.getElementById('completeButton');
+    // const nextButton = document.getElementById('nextButton');
+    const nextButton = document.getElementById('modal_dialog_correct');
+    // const completeButton = document.getElementById('completeButton');
+    const completeButton = document.getElementById('modal_dialog_complete')
+
     const timerDisplay = document.getElementById('timerDisplay');
     const scoreDisplay = document.getElementById('scoreDisplay');
 
@@ -24,9 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const levels = [
         { mainImage: 'apple.jpg', choice1: 'apple.jpg', choice2: 'banana.jpg' },
         { mainImage: 'banana.jpg', choice1: 'banana.jpg', choice2: 'cherry.jpg' },
-        // { mainImage: 'cherry.jpg', choice1: 'grape.jpg', choice2: 'cherry.jpg' },
-        // { mainImage: 'grape.jpg', choice1: 'grape.jpg', choice2: 'orange.jpg' },
-        // { mainImage: 'orange.jpg', choice1: 'peach.jpg', choice2: 'orange.jpg' },
+        { mainImage: 'grape.jpg', choice1: 'pineapple.jpg', choice2: 'grape.jpg' },
+        { mainImage: 'strawberry.jpg', choice1: 'grape.jpg', choice2: 'strawberry.jpg' },
+        { mainImage: 'pear.jpg', choice1: 'pear.jpg', choice2: 'peach.jpg' },
         // { mainImage: 'peach.jpg', choice1: 'peach.jpg', choice2: 'pear.jpg' },
         // { mainImage: 'pear.jpg', choice1: 'pear.jpg', choice2: 'pineapple.jpg' },
         // { mainImage: 'pineapple.jpg', choice1: 'pineapple.jpg', choice2: 'strawberry.jpg' },
