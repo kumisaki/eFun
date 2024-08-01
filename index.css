@@ -1,17 +1,17 @@
 .section-1 {
-    background-color: lightcoral;
+    /* background-color: lightcoral; */
 }
 
 .section-2 {
-    background-color: lightblue;
+    /* background-color: lightblue; */
 }
 
 .section-3 {
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
 }
 
 .section-4 {
-    background-color: lightgoldenrodyellow;
+    /* background-color: lightgoldenrodyellow; */
 }
 
 .section {
@@ -58,6 +58,27 @@ a.section:hover {
     /* 移除链接下划线 */
     color: inherit;
     /* 保持文字颜色 */
+}
+
+.part1 {
+    background-image: url(./assets/img/part1.png);
+    /* background-size: contain; */
+    background-size: 100% 100%;
+}
+
+.part2 {
+    background-image: url(./assets/img/part2.png);
+    background-size: 100% 100%;
+}
+
+.part3 {
+    background-image: url(./assets/img/part3.png);
+    background-size: 100% 100%;
+}
+
+.part4 {
+    background-image: url(./assets/img/part4.png);
+    background-size: 100% 100%;
 }
 
 .button-back {
