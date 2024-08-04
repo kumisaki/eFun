@@ -73,7 +73,7 @@ document.getElementById('yesButton').addEventListener('click', () => {
 });
 
 document.getElementById('noButton').addEventListener('click', () => {
-    window.location.href = 'https://example.com'; // Replace with your desired URL
+    window.location.href = '../pronounce.html'; // Replace with your desired URL
 });
 
 function startGame() {
