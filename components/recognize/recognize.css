@@ -1,33 +1,76 @@
-body,
-html {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
+@media (max-width: 1024px) {
+    .animal-farm {
+        position: relative;
+        width: 1789px;
+        height: 885px;
+        background-image: url('../../assets/img/animals.jpg');
+        background-size: cover;
+        /* background-repeat: no-repeat; */
+    }
+
+    .animal {
+        /* background-color: rgba(0, 0, 0, 0.5); */
+        position: absolute;
+        cursor: pointer;
+    }
+
+    .popup {
+        position: absolute;
+        background-color: white;
+        border: 1px solid black;
+        padding: 10px;
+        display: none;
+        z-index: 1000;
+    }
+
 }
 
-.animal-farm {
-    position: relative;
-    width: 1789px;
-    height: 885px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-image: url('../../assets/img/animals.jpg');
-    background-size: cover;
-}
+@media (min-width: 1620px) {
+
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .animal-farm {
+        position: relative;
+        width: 1789px;
+        height: 885px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-image: url('../../assets/img/animals.jpg');
+        background-size: cover;
+    }
 
 
-.animal {
-    /* background-color: rgba(0, 0, 0, 0.5); */
-    position: absolute;
-    cursor: pointer;
-}
+    .animal {
+        /* background-color: rgba(0, 0, 0, 0.5); */
+        position: absolute;
+        cursor: pointer;
+    }
 
-.popup {
-    position: absolute;
-    background-color: white;
-    border: 1px solid black;
-    padding: 10px;
-    display: none;
-    z-index: 1000;
+    .popup {
+        position: absolute;
+        background-color: white;
+        border: 1px solid black;
+        padding: 10px;
+        display: none;
+        z-index: 1000;
+    }
+
+    /* .button-back {
+        background-repeat: no-repeat;
+        background-image: url(../../assets/img/back.png);
+        background-size: cover;
+        margin: 1.5rem 1.5rem;
+        width: 100px;
+        height: 100px;
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+        position: fixed;
+
+    } */
 }

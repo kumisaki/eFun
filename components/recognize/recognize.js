@@ -6,6 +6,8 @@ $(document).ready(function () {
         var $animal = $(this);
         var animalName = $animal.data('name');
         var $popup = $('#popup');
+
+        // set up animal position to avoid the popup overflow the window
         var offset = $animal.offset();
         var animalFarmOffset = $('#animalFarm').offset();
         var animalFarmWidth = $('#animalFarm').width();
@@ -14,28 +16,24 @@ $(document).ready(function () {
         var popupHeight = $popup.height();
         var sound = $('#pronounce');
 
-        // Calculate position
         var top = offset.top;
         var left = offset.left;
 
         if (offset.top - animalFarmOffset.top < animalFarmHeight / 2) {
-            // Animal is in the top half of the farm, show popup below
             top += $animal.height();
         } else {
-            // Animal is in the bottom half of the farm, show popup above
             top -= popupHeight;
         }
 
         if (offset.left - animalFarmOffset.left < animalFarmWidth / 2) {
-            // Animal is in the left half of the farm, show popup to the right
             left += $animal.width();
         } else {
-            // Animal is in the right half of the farm, show popup to the left
             left -= popupWidth;
         }
 
         // Update popup content
-        $popup.html('<img src="../../assets/img/' + animalName + '.png" alt="' + animalName + '" style="height:232px;">');
+        $popup.html(`<img src="../../assets/img/${animalName}.png" 
+            alt="${animalName}" style="height:232px;">`);
         sound.attr('src', `../../assets/sound/${animalName}.mp3`);
         sound.get(0).play()
         $popup.css({

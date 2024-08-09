@@ -1,56 +1,57 @@
 $(document).ready(function() {
   const canvas = $('#gameCanvas')[0];
   const ctx = canvas.getContext('2d');
+  const character = window.location.search.substring(1);
+  objectImage.src = `../../../assets/img/${character}-2.png`; 
 
-  let bird = {
-    x: canvas.width / 2,  // Center the bird horizontally
+  let object = {
+    x: canvas.width / 2,  // Center the object horizontally
     y: canvas.height / 2,
-    width: 160, // Width of the bird image
-    height: 120, // Height of the bird image
+    width: 160, // Width of the object image
+    height: 120, // Height of the object image
     velocity: 0
   };
 
   function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    bird.x = canvas.width / 2;  // Center the bird horizontally
+    object.x = canvas.width / 2;  // Center the object horizontally
   }
 
   resizeCanvas();
   $(window).on('resize', resizeCanvas);
 
-  const birdImage = new Image();
-  birdImage.src = '../../../assets/img/fish-2.png'; // Replace with the path to your bird image
-
+  const objectImage = new Image();
+  
   let gravity = 0.05; // Reduced gravity for slower descent
   let lift = -5;
   let isGameRunning = false;
   let animationFrameId;
 
-  function drawBird() {
-    ctx.drawImage(birdImage, bird.x - bird.width / 2, bird.y - bird.height / 2, bird.width, bird.height);
+  function drawobject() {
+    ctx.drawImage(objectImage, object.x - object.width / 2, object.y - object.height / 2, object.width, object.height);
   }
 
-  function updateBird() {
-    bird.velocity += gravity;
-    bird.y += bird.velocity;
+  function updateobject() {
+    object.velocity += gravity;
+    object.y += object.velocity;
 
-    // Ensure bird does not go below canvas bottom
-    if (bird.y + bird.height / 2 > canvas.height) {
-      bird.y = canvas.height - bird.height / 2;
-      bird.velocity = 0;
+    // Ensure object does not go below canvas bottom
+    if (object.y + object.height / 2 > canvas.height) {
+      object.y = canvas.height - object.height / 2;
+      object.velocity = 0;
     }
 
-    if (bird.y < 50 + bird.height / 2) { // Limit bird's highest position
-      bird.y = 50 + bird.height / 2;
-      bird.velocity = 0;
+    if (object.y < 50 + object.height / 2) { // Limit object's highest position
+      object.y = 50 + object.height / 2;
+      object.velocity = 0;
     }
   }
 
   function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawBird();
-    updateBird();
+    drawobject();
+    updateobject();
     animationFrameId = requestAnimationFrame(gameLoop);
   }
 
@@ -69,8 +70,8 @@ $(document).ready(function() {
   function startGame() {
     isGameRunning = true;
     $('#controlButton').addClass('button-pause').removeClass('button-start');
-    bird.y = canvas.height / 2; // Reset bird position
-    bird.velocity = 0;
+    object.y = canvas.height / 2; // Reset object position
+    object.velocity = 0;
     gameLoop();
     startVoiceControl();
   }
@@ -109,7 +110,7 @@ $(document).ready(function() {
 
         if (maxAmplitude > 128) {
           let liftForce = (maxAmplitude - 128) / 10; // Adjust sensitivity
-          bird.velocity = lift - liftForce;
+          object.velocity = lift - liftForce;
         }
 
         requestAnimationFrame(detectSound);

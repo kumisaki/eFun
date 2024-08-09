@@ -1,27 +1,16 @@
 let currentIndex = 1;
 const cards = document.querySelectorAll('.card');
-// const audio = document.getElementById('audio');
-// const playPauseButton = document.getElementById('playPauseButton');
-// const progressBar = document.getElementById('progress');
 document.getElementById('backButton').addEventListener('click', () => {
     window.location.href = '../../index.html';
 });
 function updateCards() {
     cards.forEach((card, index) => {
-        // console.log(card, index)
         card.style.transition = 'transform 0.3s, opacity 0.3s';
         if (index === currentIndex) {
-            // card.style.transform = 'translateX(0px) scale(1)';
             card.style.transform = 'translateX(0px) scale(1)';
             card.style.zIndex = '3';
             card.style.opacity = '1';
-            // audio.src = card.getAttribute('data-song');
-            // audio.currentTime = 0;
-            // progressBar.style.width = '0%';
-            // audio.pause();
-            // playPauseButton.textContent = 'Play';
         } else if (index === currentIndex - 1) {
-            // card.style.transform = 'translateX(-110px) scale(0.8)';
             card.style.transform = 'translateX(-220px) scale(0.8)';
             card.style.zIndex = '2';
             card.style.opacity = '0.8';
@@ -78,7 +67,7 @@ function checkAndRedirect(card, index) {
     }
 
     if (index === currentIndex) {
-        window.location.href = `./practices/pronounce-practice-${practice}.html`;
+        window.location.href = `./practices/pronounce-practice-${practice}.html?${practice}`;
     }
 }
 
@@ -89,20 +78,6 @@ cards.forEach((card, index) => {
     });
 });
 
-// function togglePlayPause() {
-//     if (audio.paused) {
-//         audio.play();
-//         playPauseButton.textContent = 'Pause';
-//     } else {
-//         audio.pause();
-//         playPauseButton.textContent = 'Play';
-//     }
-// }
-
-// audio.addEventListener('timeupdate', () => {
-//     const progress = (audio.currentTime / audio.duration) * 100;
-//     progressBar.style.width = progress + '%';
-// });
 
 cards.forEach((card, index) => {
     card.addEventListener('click', () => selectCard(index));
