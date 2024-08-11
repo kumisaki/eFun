@@ -1,4 +1,4 @@
-@media (max-width: 1024px) {
+@media (min-width: 2100px) {
     .animal-farm {
         position: relative;
         width: 1789px;
@@ -25,7 +25,7 @@
 
 }
 
-@media (min-width: 1620px) {
+@media (min-width: 1620px) and (max-width: 2000px) {
 
     body,
     html {

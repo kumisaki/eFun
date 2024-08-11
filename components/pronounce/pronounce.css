@@ -152,17 +152,19 @@ body {
 
 .arrow-left {
     left: 10px;
+    display: none;
 }
 
 .arrow-right {
     right: 10px;
+    display: none;
 }
 
 .practice-select-tips {
     position: fixed;
     text-align: center;
     width: 100%;
-    bottom: 6%;
+    bottom: 5%;
     font-size: 1.5rem;
     font-weight: 600;
     color: #637179;

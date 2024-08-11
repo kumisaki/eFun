@@ -2,6 +2,7 @@ $(document).ready(function() {
   const canvas = $('#gameCanvas')[0];
   const ctx = canvas.getContext('2d');
   const character = window.location.search.substring(1);
+  const objectImage = new Image();
   objectImage.src = `../../../assets/img/${character}-2.png`; 
 
   let object = {
@@ -20,8 +21,6 @@ $(document).ready(function() {
 
   resizeCanvas();
   $(window).on('resize', resizeCanvas);
-
-  const objectImage = new Image();
   
   let gravity = 0.05; // Reduced gravity for slower descent
   let lift = -5;
