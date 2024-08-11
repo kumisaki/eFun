@@ -2,7 +2,7 @@ document.getElementById('backButton').addEventListener('click', () => {
     window.location.href = '../../index.html';
 });
 // $('#myModal2').modal('show');
-// $('#myModal').modal('show');
+$('#myModal').modal('show');
 
 document.addEventListener('DOMContentLoaded', () => {
     const mainImage = document.getElementById('mainImage');

@@ -1,31 +1,4 @@
-@media (min-width: 2100px) {
-    .animal-farm {
-        position: relative;
-        width: 1789px;
-        height: 885px;
-        background-image: url('../../assets/img/animals.jpg');
-        background-size: cover;
-        /* background-repeat: no-repeat; */
-    }
-
-    .animal {
-        /* background-color: rgba(0, 0, 0, 0.5); */
-        position: absolute;
-        cursor: pointer;
-    }
-
-    .popup {
-        position: absolute;
-        background-color: white;
-        border: 1px solid black;
-        padding: 10px;
-        display: none;
-        z-index: 1000;
-    }
-
-}
-
-@media (min-width: 1620px) and (max-width: 2000px) {
+@media (min-width: 800px) and (max-width: 2160px) {
 
     body,
     html {
@@ -35,14 +8,14 @@
     }
 
     .animal-farm {
-        position: relative;
+        position: absolute;
         width: 1789px;
         height: 885px;
-        top: 50%;
+        /* top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); */
         background-image: url('../../assets/img/animals.jpg');
-        background-size: cover;
+        background-size: 100% 100%;
     }
 
 
