@@ -62,23 +62,38 @@ a.section:hover {
 
 .part1 {
     background-image: url(./assets/img/part1.png);
-    /* background-size: contain; */
-    background-size: 100% 100%;
+    background-size: contain;
+    background-position-x: right;
+    background-position-y: bottom;
+    background-repeat:no-repeat;
+    background-color: #ffe6a1;
 }
 
 .part2 {
     background-image: url(./assets/img/part2.png);
-    background-size: 100% 100%;
+    background-size: contain;
+    background-position-x: left;
+    background-position-y: bottom;
+    background-repeat:no-repeat;
+    background-color: #b7deff;
 }
 
 .part3 {
     background-image: url(./assets/img/part3.png);
-    background-size: 100% 100%;
+    background-size: contain;
+    background-position-x: right;
+    background-position-y: top;
+    background-repeat:no-repeat;
+    background-color: #9fe0dc;
 }
 
 .part4 {
     background-image: url(./assets/img/part4.png);
-    background-size: 100% 100%;
+    background-size: contain;
+    background-position-x: left;
+    background-position-y: top;
+    background-repeat:no-repeat;
+    background-color: #ffa6ae;
 }
 
 .button-back {
